@@ -14,11 +14,13 @@ class Header extends React.Component {
 class GestionarRoles extends React.Component {
   constructor(props) {
     super(props);
+    this.DATA={"Emails":[]}
     this.state = {
       correoElectronico: '',
       rol: 'Encargado',
       usuariosRegistrados: [],
       usuariosAEliminar: [],
+
     };
   }
 
@@ -30,19 +32,32 @@ class GestionarRoles extends React.Component {
     this.setState({ rol: event.target.value });
   };
 
-  handleAgregarAEliminacion = () => {
-    const { correoElectronico, rol, usuariosAEliminar } = this.state;
-    const newUser = { Nombre: '', Email: correoElectronico, Rol: rol };
-    this.setState({
-      usuariosAEliminar: [...usuariosAEliminar, newUser],
-      correoElectronico: '',
-      rol: 'Encargado',
-    });
+  handleAgregarAEliminacion = async() => {
+    const dataa={"Email":this.state["correoElectronico"]}
+
+    const rest=await fetch(process.env.REACT_APP_API+'/existencia',{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify(dataa)
+      }
+      )
+      const data= await rest.json();
+      console.log(data)
+      if (data["validez"]=== "True") {
+        this.DATA.Emails.push(dataa);
+        console.log(this.DATA)
+      }
+
   };
 
-  handleConfirmEliminacion = () => {
-    // Implement logic to confirm user deletion
-    // You can remove users from 'usuariosRegistrados' based on 'usuariosAEliminar'
+  handleConfirmEliminacion =  async() => {
+
+    const rest=await fetch(process.env.REACT_APP_API+'/eliminar',{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify(this.DATA)
+      })
+    const data= await rest.json();
   };
 
   handleCancelarEliminacion = () => {
