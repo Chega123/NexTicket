@@ -36,24 +36,34 @@ class Registro extends React.Component {
     this.setState({ aceptoPromociones: event.target.checked });
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async(event) => {
     event.preventDefault();
+    const ConfirmEmai= this.state.confirmEmail
+    const ConfirmPassword= this.state.confirmPassword
+    const AceptoTerminos= this.state.aceptoTerminos
+    const AceptoTerminoseptoPromociones= this.state.aceptoPromociones
+
     const formData = {
-      nombres: this.state.nombres,
-      apellidos: this.state.apellidos,
-      email: this.state.email,
-      confirmEmail: this.state.confirmEmail,
-      telefono: this.state.telefono,
-      password: this.state.password,
-      confirmPassword: this.state.confirmPassword,
-      documentType: this.state.documentType,
-      documentNumber: this.state.documentNumber,
-      sexo: this.state.sexo,
-      fechaNacimiento: this.state.fechaNacimiento,
-      aceptoTerminos: this.state.aceptoTerminos,
-      aceptoPromociones: this.state.aceptoPromociones,
+      Nombres: this.state.nombres,
+      Apellidos: this.state.apellidos,
+      Email: this.state.email,
+      Telefono: this.state.telefono,
+      Contraseña: this.state.password,
+      Tipo: this.state.documentType,
+      Numero: this.state.documentNumber,
+      Sexo: this.state.sexo,
+      Fecha_Nacimiento: this.state.fechaNacimiento,
+      Rol:'Usuario'
+
     };
-    console.log(formData);
+    const rest=await fetch(process.env.REACT_APP_API+'/registro',{
+    method:'POST',
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify(formData)
+    }
+    )
+    const data= await rest.json();
+    console.log(data)
   }
 
   render() {
