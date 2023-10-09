@@ -28,7 +28,8 @@ class Login extends React.Component {
     this.setState({ password: event.target.value });
   }
 
-  handleLogin = () => {
+  handleLogin = (event) => {
+    event.preventDefault();
     console.log('Correo Electrónico:', this.state.email);
     console.log('Contraseña:', this.state.password);
   }
