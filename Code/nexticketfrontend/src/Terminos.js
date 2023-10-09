@@ -57,7 +57,7 @@ class Terminos extends React.Component {
                   marginTop: '20px',
                   marginRight: '10px',
               }}>
-                  <Link to="/" style={{ color: '#ffffff', textDecoration: 'none' }}>Volver a Registro</Link>
+                  <Link to="/registro" style={{ color: '#ffffff', textDecoration: 'none' }}>Volver a Registro</Link>
               </button>
           </div>
           <br></br>

@@ -1,6 +1,6 @@
 import React, { } from 'react';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+
 class Registro extends React.Component {
   constructor(props) {
     super(props);
@@ -64,10 +64,7 @@ class Registro extends React.Component {
     }
     )
     const data= await rest.json();
-    console.log(data);
-
-    const navigate = useNavigate();
-    navigate('/login');
+    console.log(data)
   }
 
   render() {
@@ -163,7 +160,7 @@ class Registro extends React.Component {
                   onChange={this.handleAceptoTerminosChange}
                   style={{ margin: '10px 0', backgroundColor: '#ffffff', color: '#000000' }}
               />
-              Declaro que he leído y acepto los Términos y Condiciones,  y la Política de Privacidad <br></br> de Nex Ticket <Link to="/terminos">(Ver Términos y Condiciones)</Link>.
+              Declaro que he leído y acepto los Términos y Condiciones,  y la Política de Privacidad <br></br> de Nex Ticket (<Link to ="/terminos">Ver Términos y Condiciones).</Link>
               <br></br>
             </label>
 

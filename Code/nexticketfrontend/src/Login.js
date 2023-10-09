@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 class Header extends React.Component {
   render() {
     return (
@@ -61,8 +61,10 @@ class Login extends React.Component {
                 <button type="submit" style={{ backgroundColor: '#575960', color: '#ffffff', padding: '10px 20px', fontSize: '18px', borderRadius: '5px', border: 'none', cursor: 'pointer', marginTop: '20px' }}>
                   Ingresar
                 </button>
-                <button type="button" onClick={() => { /* Aquí puedes enlazar con otro componente de react o archivo .js */ }} style={{ marginLeft:'10px', backgroundColor:'#575960', color:'#ffffff', padding:'10px 20px', fontSize:'18px', borderRadius:'5px', border:'none', cursor:'pointer'}}>
-                  Registrarse
+                <button type="button" style={{ marginLeft:'10px', backgroundColor:'#575960', color:'#ffffff', padding:'10px 20px', fontSize:'18px', borderRadius:'5px', border:'none', cursor:'pointer'}}>
+                  <Link to="/registro" style={{ color: '#FFF', textDecoration: 'none' }}>
+                    Registrarse
+                  </Link>
                 </button>
               </div>
             </form>

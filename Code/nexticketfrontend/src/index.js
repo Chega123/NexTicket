@@ -14,9 +14,9 @@ root.render(
   <React.StrictMode>
     <Router>
       <Routes>
-          <Route path="/" element={<Registro />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
           <Route path="/terminos" element={<Terminos />} />
-          <Route path="/login" element={<Login />} />
           {/* Agrega aquí las rutas para los demás componentes */}
       </Routes>
     </Router>
