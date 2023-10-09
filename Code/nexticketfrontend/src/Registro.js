@@ -1,5 +1,5 @@
 import React, { } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 class Registro extends React.Component {
   constructor(props) {
     super(props);
@@ -63,7 +63,10 @@ class Registro extends React.Component {
     }
     )
     const data= await rest.json();
-    console.log(data)
+    console.log(data);
+
+    const navigate = useNavigate();
+    navigate('/login');
   }
 
   render() {

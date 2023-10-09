@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css';
-import App from './App';
 import Registro from './Registro';
 import Terminos from './Terminos';
 import Login from './Login';
@@ -12,8 +12,13 @@ import EliminarUsuarios from "./EliminarUsuarios";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <div>
-      <Login/>
-    </div>
+    <Router>
+      <Routes>
+          <Route path="/" element={<Registro />} />
+          <Route path="/terminos" element={<Terminos />} />
+          <Route path="/login" element={<Login />} />
+          {/* Agrega aquí las rutas para los demás componentes */}
+      </Routes>
+    </Router>
   </React.StrictMode>,
 );

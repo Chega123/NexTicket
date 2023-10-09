@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
   render() {
@@ -55,9 +56,11 @@ class Terminos extends React.Component {
                   cursor: 'pointer',
                   marginTop: '20px',
                   marginRight: '10px',
-              }}
-              >Volver a Registro</button>
+              }}>
+                  <Link to="/" style={{ color: '#ffffff', textDecoration: 'none' }}>Volver a Registro</Link>
+              </button>
           </div>
+          <br></br>
       </div>
     );
   }
