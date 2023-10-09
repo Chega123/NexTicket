@@ -44,9 +44,24 @@ class Terminos extends React.Component {
         <Header />
         <TermsAndConditions />
         <PrivacyPolicy />
+          <div style={{ textAlign: 'center' }}>
+              <button style={{
+                  backgroundColor: '#575960',
+                  color: '#ffffff',
+                  padding: '10px 20px',
+                  fontSize: '18px',
+                  borderRadius: '5px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  marginTop: '20px',
+                  marginRight: '10px',
+              }}
+              >Volver a Registro</button>
+          </div>
       </div>
     );
   }
 }
+
 
 export default Terminos;
