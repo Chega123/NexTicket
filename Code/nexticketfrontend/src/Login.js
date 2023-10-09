@@ -28,10 +28,18 @@ class Login extends React.Component {
     this.setState({ password: event.target.value });
   }
 
-  handleLogin = (event) => {
+  handleLogin = async(event) => {
     event.preventDefault();
-    console.log('Correo Electrónico:', this.state.email);
-    console.log('Contraseña:', this.state.password);
+    const datafin={"Email":this.state["email"],"Contrasena":this.state["password"]}
+    const rest=await fetch(process.env.REACT_APP_API+'/login',{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify(datafin)
+        }
+        )
+      const data= await rest.json();
+      console.log(data)
+
   }
 
   render() {
