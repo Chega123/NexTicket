@@ -160,8 +160,7 @@ class Registro extends React.Component {
                   onChange={this.handleAceptoTerminosChange}
                   style={{ margin: '10px 0', backgroundColor: '#ffffff', color: '#000000' }}
               />
-              Declaro que he leído y acepto los Términos y Condiciones,  y la Política de Privacidad <br></br> de Nex Ticket (<Link to ="/terminos">Ver Términos y Condiciones).</Link>
-              <br></br>
+              Declaro que he leído y acepto los Términos y Condiciones,  y la Política de Privacidad <br></br> de Nex Ticket (<Link to ="/terminos">Ver Términos y Condiciones).</Link><br></br>
             </label>
 
             <label style={{ fontSize: '18px', color: '#000000' }}>
@@ -175,6 +174,7 @@ class Registro extends React.Component {
               Autorizo que Nex Ticket pueda enviarme información sobre eventos y promociones.
             </label>
             <br></br>
+            <Link to="/">
             <button
               type="submit"
               style={{
@@ -190,11 +190,11 @@ class Registro extends React.Component {
             >
               Registrarse
             </button>
+              </Link>
           </form>
         </div>
       </div>
     );
   }
 }
-
 export default Registro;
