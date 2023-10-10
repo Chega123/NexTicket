@@ -17,6 +17,9 @@ ReactDOM.render(
         <Route path="/registro" element={<Registro />} />
         <Route path="/terminos" element={<Terminos />} />
         <Route path="/administrador" element={<Administrador />} />
+        <Route path="/gestiona_rol" element={<GestionarRoles />} />
+        <Route path="/eliminar_u" element={<EliminarUsuarios />} />
+        
         {/* Agrega aquí las rutas para los demás componentes */}
       </Routes>
     </React.StrictMode>

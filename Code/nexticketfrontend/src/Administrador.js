@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
   constructor(props) {
@@ -102,12 +103,17 @@ class Administrador extends React.Component {
         <Header />
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
           <button style={{ backgroundColor: '#575960', color: '#ffffff', padding: '10px 20px', fontSize: '18px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>
-            Gestionar Roles
+          <Link to="/gestiona_rol" style={{ color: '#FFF', textDecoration: 'none' }}>
+                    Gestionar Roles
+          </Link>
           </button>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
           <button style={{ backgroundColor: '#575960', color: '#ffffff', padding: '10px 20px', fontSize: '18px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>
-            Eliminar Usuario(s)
+            
+            <Link to="/eliminar_u" style={{ color: '#FFF', textDecoration: 'none' }}>
+            Eliminar Usuario
+          </Link>
           </button>
         </div>
         <br></br>

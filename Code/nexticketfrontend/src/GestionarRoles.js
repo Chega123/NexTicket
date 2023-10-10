@@ -30,6 +30,7 @@ class GestionarRoles extends React.Component {
 
   handleConfirmChanges =async () => {
     const data = {Email:this.state["correoElectronico"],Rol:this.state["rol"]};
+    console.log(data)
     const rest=await fetch(process.env.REACT_APP_API+'/cambia',{
       method:'POST',
       headers:{'content-type':'application/json'},
@@ -55,7 +56,7 @@ class GestionarRoles extends React.Component {
               <select value={this.state.rol} onChange={this.handleRoleChange} style={{ display: 'block', margin: '10px 0', padding: '10px', borderRadius: '5px', width: '300px', backgroundColor: '#ffffff', color: '#000000' }}>
                 <option value="Encargado">Encargado</option>
                 <option value="Administrador">Administrador</option>
-                <option value="Cliente">Usuario</option>
+                <option value="Usuario">Usuario</option>
               </select>
             </label>
             <div style={{ textAlign: 'center' }}>

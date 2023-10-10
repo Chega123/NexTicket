@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 class Registro extends React.Component {
   constructor(props) {
     super(props);
+    this.linkRef = React.createRef();
     this.state = {
       documentType: '',
       sexo: '',
@@ -38,7 +39,9 @@ class Registro extends React.Component {
   }
 
   handleSubmit = async(event) => {
+    
     event.preventDefault();
+    
     const ConfirmEmai= this.state.confirmEmail
     const ConfirmPassword= this.state.confirmPassword
     const AceptoTerminos= this.state.aceptoTerminos
@@ -65,6 +68,7 @@ class Registro extends React.Component {
     )
     const data= await rest.json();
     console.log(data)
+    this.linkRef.current.click();
   }
 
   render() {
@@ -174,7 +178,7 @@ class Registro extends React.Component {
               Autorizo que Nex Ticket pueda enviarme información sobre eventos y promociones.
             </label>
             <br></br>
-            <Link to="/">
+            
             <button
               type="submit"
               style={{
@@ -190,7 +194,8 @@ class Registro extends React.Component {
             >
               Registrarse
             </button>
-              </Link>
+              
+            <Link to="/" ref={this.linkRef} style={{ display: 'none' }} />
           </form>
         </div>
       </div>

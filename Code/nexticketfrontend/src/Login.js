@@ -46,7 +46,6 @@ class Login extends React.Component {
     const data = await rest.json();
     console.log(data)
     if (data["Tipo_persona"] === "Administrador") {
-      // Usar 'this' para acceder a 'linkRef'
       this.linkRef.current.click();
     }
   }

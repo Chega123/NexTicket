@@ -14,7 +14,7 @@ class Header extends React.Component {
 class GestionarRoles extends React.Component {
   constructor(props) {
     super(props);
-    this.DATA={"Emails":[]}
+    this.DATA={"Personas":[]}
     this.state = {
       correoElectronico: '',
       rol: 'Encargado',

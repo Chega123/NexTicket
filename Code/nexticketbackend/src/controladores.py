@@ -129,20 +129,48 @@ class controlador_cambiar_rol():
     def camabiar_rol_guardan(self):
         verificador = self.verifica()
         email = self.datos["Email"]
+
         rol=self.datos["Rol"]
         if verificador:
-            consulta_sql=consulta_sql = f"""
-            UPDATE "Persona"
-            SET "Rol" = %s
-            WHERE "Email" = %s 
-            """
-            self.BD.execute(consulta_sql,(rol,email))
-            conn.commit()
-            return True
-        else:
+            if (rol!= verificador[0][7]):
+                print(email)
+                self.BD.execute('DELETE FROM "Persona" WHERE "Email" = %s', (email,))
+                conn.commit()
+                if (rol=="Usuario"):
+                    insert_sql_usuario = 'INSERT INTO "Usuario" ("Nombres", "Apellidos", "Email", "Telefono","Contraseña", "Fecha_Nacimiento", "Rol","Sexo","documento_id") VALUES ( %s,%s, %s, %s, %s, %s, %s,%s,%s) RETURNING "ID"'
             
+                    valores_usuario = (
+                        verificador[0][1],verificador[0][2],verificador[0][3],verificador[0][4],verificador[0][5],verificador[0][6],"Usuario",verificador[0][8],verificador[0][9]
+                    ) 
+                    self.BD.execute(insert_sql_usuario, valores_usuario)
+                    conn.commit() 
+
+                elif(rol=="Encargado"):
+                    insert_sql_usuario = 'INSERT INTO "Encargado" ("Nombres", "Apellidos", "Email", "Telefono","Contraseña", "Fecha_Nacimiento", "Rol","Sexo","documento_id") VALUES ( %s,%s, %s, %s, %s, %s, %s,%s,%s) RETURNING "ID"'
+            
+                    valores_usuario = (
+                        verificador[0][1],verificador[0][2],verificador[0][3],verificador[0][4],verificador[0][5],verificador[0][6],"Encargado",verificador[0][8],verificador[0][9]
+                    ) 
+                    self.BD.execute(insert_sql_usuario, valores_usuario)
+                    conn.commit() 
+
+                elif(rol=="Administrador"):
+                    insert_sql_usuario = 'INSERT INTO "Administrador" ("Nombres", "Apellidos", "Email", "Telefono","Contraseña", "Fecha_Nacimiento", "Rol","Sexo","documento_id") VALUES ( %s,%s, %s, %s, %s, %s, %s,%s,%s) RETURNING "ID"'
+            
+                    valores_usuario = (
+                        verificador[0][1],verificador[0][2],verificador[0][3],verificador[0][4],verificador[0][5],verificador[0][6],"Administrador",verificador[0][8],verificador[0][9]
+                    ) 
+                    self.BD.execute(insert_sql_usuario, valores_usuario)
+                    conn.commit() 
+                else:
+                    return False
+                return True
             return False
-        
+        else:
+            return False
+       
+
+
 def verifica_Email(datajson):
     datos=datajson
     email=datos["Email"]
@@ -150,14 +178,12 @@ def verifica_Email(datajson):
     BD_U.execute(consulta_sql)
     resultados = BD_U.fetchall()
     if (resultados):
-        return True
+        return resultados
     else:
-        return False
+        return []
         
 
-    def __init__(self,db) :
-        self.BD=db
-
+    
 class controlador_eleminar_usuario():
     def __init__(self,db) :
         self.BD=db
