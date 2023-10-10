@@ -203,7 +203,8 @@ class controlador_eleminar_usuario():
             self.BD.execute('DELETE FROM "Documentos" WHERE "ID" = %s', (documento_id,))
             conn.commit()
 def genera_personas_1():
-    consulta = 'SELECT "Nombres","Email","Rol" FROM "Persona"'
+    rol="Usuario"
+    consulta = f'SELECT "Nombres","Email","Rol" FROM "Persona" WHERE "Rol"=\'{rol}\''
     BD_U.execute(consulta)
     resultados = BD_U.fetchall()
     columnas=["Nombre","Email","Rol"]
