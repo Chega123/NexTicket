@@ -15,6 +15,7 @@ class GestionarRoles extends React.Component {
   constructor(props) {
     super(props);
     this.DATA={"Personas":[]}
+    this.DATA_general={"Personas":[]}
     this.state = {
       correoElectronico: '',
       rol: 'Encargado',
@@ -22,7 +23,22 @@ class GestionarRoles extends React.Component {
       usuariosAEliminar: [],
 
     };
+    
   }
+  async componentDidMount() {
+
+    const rest=await fetch(process.env.REACT_APP_API+'/generar_personas',{
+      method:'GET',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify()
+      }
+      )
+    const data=await rest.json()
+    this.DATA_general["Personas"]=data
+    console.log(this.DATA_general)
+
+  }
+
 
   handleEmailChange = (event) => {
     this.setState({ correoElectronico: event.target.value });
@@ -44,7 +60,7 @@ class GestionarRoles extends React.Component {
       const data= await rest.json();
       console.log(data)
       if (data["validez"]=== "True") {
-        this.DATA.Emails.push(dataa);
+        this.DATA.Personas.push(data);
         console.log(this.DATA)
       }
 
@@ -83,7 +99,13 @@ class GestionarRoles extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {/* Map through 'usuariosRegistrados' to generate rows */}
+              {this.DATA_general["Personas"].map((usuario, index) => (
+                  <tr key={index}>
+                    <td>{usuario.Nombre}</td>
+                    <td>{usuario.Email}</td>
+                    <td>{usuario.Rol}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 
@@ -112,7 +134,13 @@ class GestionarRoles extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {/* Map through 'usuariosAEliminar' to generate rows */}
+              {this.DATA["Personas"].map((usuario, index) => (
+                  <tr key={index}>
+                    <td>{usuario.Nombre}</td>
+                    <td>{usuario.Email}</td>
+                    <td>{usuario.Rol}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 

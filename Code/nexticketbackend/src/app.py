@@ -43,7 +43,7 @@ def verifica_email():
     #controlamos la existencnia del Email
     if (controla):
         #envia true si exite
-        return '{"validez":"True"}'
+        return {"validez":"True","Nombre":controla[0][1],"Email":controla[0][3],"Rol":controla[0][7]}
     else:
         return '{"validez":"False"}'
 
@@ -54,7 +54,11 @@ def eliminar_personas():
     eliminar_person.enviar(request.json)
     eliminar_person.eliminar()
     return {"validez":"True"}
-    
+
+@app.route('/generar_personas',methods=['GET'])
+def genera_person():
+    base=genera_personas_1()
+    return base
 if __name__ == '__main__':
 
     app.run(debug=True)

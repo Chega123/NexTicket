@@ -193,7 +193,7 @@ class controlador_eleminar_usuario():
         
     def eliminar(self):
         print(self.data)
-        datos=self.data["Emails"]
+        datos=self.data["Personas"]
 
         for emails in datos:
             self.BD.execute('SELECT "documento_id" FROM "Persona" WHERE "Email" = %s', (emails["Email"],))
@@ -202,3 +202,12 @@ class controlador_eleminar_usuario():
             conn.commit()  
             self.BD.execute('DELETE FROM "Documentos" WHERE "ID" = %s', (documento_id,))
             conn.commit()
+def genera_personas_1():
+    consulta = 'SELECT "Nombres","Email","Rol" FROM "Persona"'
+    BD_U.execute(consulta)
+    resultados = BD_U.fetchall()
+    columnas=["Nombre","Email","Rol"]
+    resultado_json=[]
+    for fila in resultados:
+        resultado_json.append(dict(zip(columnas, fila)))
+    return resultado_json
