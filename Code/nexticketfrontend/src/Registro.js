@@ -57,7 +57,7 @@ class Registro extends React.Component {
       Numero: this.state.documentNumber,
       Sexo: this.state.sexo,
       Fecha_Nacimiento: this.state.fechaNacimiento,
-      Rol:'Usuario'
+      Rol:'usuario'
 
     };
     const rest=await fetch(process.env.REACT_APP_API+'/registro',{
@@ -113,8 +113,8 @@ class Registro extends React.Component {
               <select name="documentType" onChange={this.handleDocumentTypeChange} style={{ display: 'block', margin: '10px 0', padding: '10px', borderRadius: '5px', width: '300px', backgroundColor: '#ffffff', color: '#000000' }}>
                 <option value="">--Seleccione una opción--</option>
                 <option value="DNI">Documento Nacional de Identidad (DNI)</option>
-                <option value="Pasaporte">Pasaporte</option>
-                <option value="Carnet">Carnet de extranjería</option>
+                <option value="pasaporte">Pasaporte</option>
+                <option value="carnet">Carnet de extranjería</option>
               </select>
             </label>
 

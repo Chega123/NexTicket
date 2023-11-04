@@ -1,12 +1,12 @@
 from flask import Flask,template_rendered,request
 from flask_cors import CORS
-from controladores import *
-
+from src.controlador.controlador import *
 app = Flask(__name__)
+
 CORS(app)
-@app.route ('/registro',methods=['POST'])
+@app.route('/registro',methods=['POST'])
 def crear_persona():
-    ingresa=controlador_registro(BD_U)
+    ingresa=controlador_registro()
     ingresa.enviardatos(request.json)
     ver=ingresa.guardar()
     if (ver==True):
@@ -14,19 +14,22 @@ def crear_persona():
 
     return '{"validez":"False"}'
 
-@app.route ('/login',methods=['POST'])
+
+@app.route('/login', methods=['POST'])
 def login_persona():
-    insio=controlador_inisio_sesion(BD_U)
+    print("login")
+    insio = controlador_inisio_sesion()
     insio.enviar(request.json)
-    ver=insio.confirmacion()
-    
+    ver = insio.confirmacion()
+
     resultado = {"Tipo_persona": ver}
     cadena_json = json.dumps(resultado)
-    return  cadena_json
+    return cadena_json
+
 
 @app.route ('/cambia',methods=['POST'])
 def cambia_rol():
-    cambia=controlador_cambiar_rol(BD_U)
+    cambia=controlador_cambiar_rol()
     cambia.enviar(request.json)
     print(request.json)
     ver=cambia.camabiar_rol_guardan()
@@ -34,7 +37,6 @@ def cambia_rol():
         return '{"validez":"True"}'
 
     return '{"validez":"False"}'
-
 
 
 @app.route ('/existencia',methods=['POST'])
@@ -50,15 +52,28 @@ def verifica_email():
 
 @app.route ('/eliminar',methods=['POST'])
 def eliminar_personas():
-    eliminar_person=controlador_eleminar_usuario(BD_U)
-    eliminar_person.enviar(request.json)
-    eliminar_person.eliminar()
-    return {"validez":"True"}
+    try :
+        eliminar_person=controlador_eleminar_usuario()
+        eliminar_person.enviar(request.json)
+        eliminar_person.eliminar()
+        return {"validez":"True"}
+    except:
+        return {"validez":"False"}
+
 
 @app.route('/generar_personas',methods=['GET'])
 def genera_person():
     base=genera_personas_1()
     return base
-if __name__ == '__main__':
 
+@app.route('/generar_eventos_encargado',methods=['POST'])
+def generar_ventos():
+    eventosp=generar_venetos1()
+    eventosp.enviar(request.json)
+    resultado=eventosp.buscar()
+    return resultado
+    
+    
+
+if __name__ == '__main__':
     app.run(debug=True)
