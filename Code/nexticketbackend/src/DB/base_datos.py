@@ -4,9 +4,9 @@ import psycopg2.extras
 def obtener():
     
     conn = psycopg2.connect(
-    database="nexticked",
+    database="nexticket",
     user="postgres",
-    password="berly9579",
+    password="next123",
     host="localhost",
     port="5432"
     )

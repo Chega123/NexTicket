@@ -104,15 +104,14 @@ class Administrador extends React.Component {
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
           <button style={{ backgroundColor: '#575960', color: '#ffffff', padding: '10px 20px', fontSize: '18px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>
           <Link to="/gestiona_rol" style={{ color: '#FFF', textDecoration: 'none' }}>
-                    Gestionar Roles
+            Gestionar Roles
           </Link>
           </button>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
           <button style={{ backgroundColor: '#575960', color: '#ffffff', padding: '10px 20px', fontSize: '18px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>
-            
             <Link to="/eliminar_u" style={{ color: '#FFF', textDecoration: 'none' }}>
-            Eliminar Usuario
+              Eliminar Usuario
           </Link>
           </button>
         </div>

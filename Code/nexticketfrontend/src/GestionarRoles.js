@@ -54,9 +54,9 @@ class GestionarRoles extends React.Component {
             <label style={{ fontSize: '18px', color: '#000000' }}>
               Rol:
               <select value={this.state.rol} onChange={this.handleRoleChange} style={{ display: 'block', margin: '10px 0', padding: '10px', borderRadius: '5px', width: '300px', backgroundColor: '#ffffff', color: '#000000' }}>
-                <option value="encargado">encargado</option>
-                <option value="administrador">administrador</option>
-                <option value="usuario">usuario</option>
+                <option value="encargado">Encargado</option>
+                <option value="administrador">Administrador</option>
+                <option value="usuario">Usuario</option>
               </select>
             </label>
             <div style={{ textAlign: 'center' }}>
