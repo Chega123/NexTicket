@@ -53,7 +53,6 @@ class Header extends React.Component {
     return (
       <div>
         <Header />
-  
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
           <button style={{ backgroundColor: '#575960', color: '#ffffff', padding: '10px 20px', fontSize: '18px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>
             <Link to="/crear_e" style={{ color: '#FFF', textDecoration: 'none' }}>
