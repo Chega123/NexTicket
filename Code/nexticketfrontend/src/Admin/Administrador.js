@@ -54,7 +54,7 @@ class Header extends React.Component {
       width: '100%',
       padding: '10px',
       borderRadius: '25px',
-      fontSize: '14px', // Adjusted font size to match button
+      fontSize: '14px', 
     };
 
     const labelStyle = {
@@ -98,8 +98,8 @@ class Header extends React.Component {
 
 const Administrador = () => {
   let { id } = useParams();
-  console.log(id); // Esto imprimirá el id de la URL en la consola
-
+  console.log(id); 
+  
   return (
     <div>
       <Header />

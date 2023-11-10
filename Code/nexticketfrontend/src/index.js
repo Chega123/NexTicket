@@ -8,6 +8,8 @@ import Login from './Account/Login';
 import Administrador from './Admin/Administrador';
 import GestionarRoles from './Admin/GestionarRoles';
 import EliminarUsuarios from "./Admin/EliminarUsuarios";
+import Encargado from "./Encar/Encargado";
+import CrearEvento from "./Encar/CrearEvento";
 
 ReactDOM.render(
   <Router>
@@ -19,7 +21,8 @@ ReactDOM.render(
         <Route path="/administrador" element={<Administrador />} />
         <Route path="/gestiona_rol" element={<GestionarRoles />} />
         <Route path="/eliminar_u" element={<EliminarUsuarios />} />
-        
+        <Route path="/encargado"         element={<Encargado />} />
+        <Route path="/crear_e" element={<CrearEvento />} />
         {/* Agrega aquí las rutas para los demás componentes */}
       </Routes>
     </React.StrictMode>
