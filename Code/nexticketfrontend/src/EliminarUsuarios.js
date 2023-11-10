@@ -11,7 +11,7 @@ class Header extends React.Component {
   }
 }
 
-class GestionarRoles extends React.Component {
+class EliminarUsuario extends React.Component {
   constructor(props) {
     super(props);
     this.DATA={"Personas":[]}
@@ -158,4 +158,4 @@ class GestionarRoles extends React.Component {
   }
 }
 
-export default GestionarRoles;
+export default EliminarUsuario;
