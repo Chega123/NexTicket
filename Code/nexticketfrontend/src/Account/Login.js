@@ -30,12 +30,15 @@ const Login = () => {
         const data = await response.json();
         console.log(data);
         const userType = data["Tipo_persona"];
+        const userId = data["id_persona"]; // Aquí se obtiene el id_persona del objeto de respuesta
+        console.log(data)
         if (userType === "administrador") {
-          window.location.href = "/administrador";
+          // Puedes pasar el id_persona a la URL si es necesario
+          window.location.href = `/administrador?id=${userId}`;
         } else if (userType === "usuario") {
-          window.location.href = "/usuario";
+          window.location.href = `/usuario?id=${userId}`;
         } else if (userType === "encargado") {
-          window.location.href = "/encargado";
+          window.location.href = `/encargado?id=${userId}`;
         }
       } else {
         console.log('Error en la autenticación');

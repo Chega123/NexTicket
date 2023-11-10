@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 class Header extends React.Component {
   constructor(props) {
@@ -96,29 +96,30 @@ class Header extends React.Component {
   }
 }
 
-class Administrador extends React.Component {
-  render() {
-    return (
-      <div>
-        <Header />
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-          <button style={{ backgroundColor: '#575960', color: '#ffffff', padding: '10px 20px', fontSize: '18px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>
-          <Link to="/gestiona_rol" style={{ color: '#FFF', textDecoration: 'none' }}>
-            Gestionar Roles
-          </Link>
-          </button>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-          <button style={{ backgroundColor: '#575960', color: '#ffffff', padding: '10px 20px', fontSize: '18px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>
-            <Link to="/eliminar_u" style={{ color: '#FFF', textDecoration: 'none' }}>
-              Eliminar Usuario
-          </Link>
-          </button>
-        </div>
-        <br></br>
+const Administrador = () => {
+  let { id } = useParams();
+  console.log(id); // Esto imprimirá el id de la URL en la consola
+
+  return (
+    <div>
+      <Header />
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+        <button style={{ backgroundColor: '#575960', color: '#ffffff', padding: '10px 20px', fontSize: '18px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>
+        <Link to="/gestiona_rol" style={{ color: '#FFF', textDecoration: 'none' }}>
+          Gestionar Roles
+        </Link>
+        </button>
       </div>
-    );
-  }
-}
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+        <button style={{ backgroundColor: '#575960', color: '#ffffff', padding: '10px 20px', fontSize: '18px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>
+          <Link to="/eliminar_u" style={{ color: '#FFF', textDecoration: 'none' }}>
+          Eliminar Usuario
+        </Link>
+        </button>
+      </div>
+      <br></br>
+    </div>
+  );
+};
 
 export default Administrador;

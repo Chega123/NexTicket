@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css';
-import Registro from './Registro';
-import Terminos from './Terminos';
-import Login from './Login';
-import Administrador from './Administrador';
-import GestionarRoles from './GestionarRoles';
-import EliminarUsuarios from "./EliminarUsuarios";
+import Registro from './Reg/Registro';
+import Terminos from './Reg/Terminos';
+import Login from './Account/Login';
+import Administrador from './Admin/Administrador';
+import GestionarRoles from './Admin/GestionarRoles';
+import EliminarUsuarios from "./Admin/EliminarUsuarios";
 
 ReactDOM.render(
   <Router>
