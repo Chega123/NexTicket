@@ -25,7 +25,7 @@ class Header extends React.Component {
       return (
         <div style={headerStyle}>
           <img src="/logo.png" alt="Logo" style={logoStyle} />
-          <h1 style={labelStyle}>Crear Evento</h1>
+          <h1 style={labelStyle}>Encargado</h1>
         </div>
       );
     }

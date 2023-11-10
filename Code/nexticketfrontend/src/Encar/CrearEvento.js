@@ -34,9 +34,102 @@ class Header extends React.Component {
   const CrearEvento = () => {
     let { id } = useParams();
     console.log(id);
+  
+    const [nombreEvento, setNombreEvento] = useState('');
+    const [descripcion, setDescripcion] = useState('');
+  
     return (
       <div>
         <Header />
+        <div style={{ margin: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <form>
+            <label style={{ fontSize: '18px', color: '#000000' }}>
+              Nombre del Evento:
+              <input
+                type="text"
+                name="nombreEvento"
+                value={nombreEvento}
+                onChange={(e) => setNombreEvento(e.target.value)}
+                style={{
+                  display: 'block',
+                  margin: '10px 0',
+                  padding: '10px',
+                  borderRadius: '5px',
+                  width: '300px',
+                  backgroundColor: '#ffffff',
+                  color: '#000000',
+                }}
+              />
+            </label>
+            <label style={{ fontSize: '18px', color: '#000000' }}>
+              Descripción:
+              <textarea
+                name="descripcion"
+                value={descripcion}
+                onChange={(e) => setDescripcion(e.target.value)}
+                style={{
+                  display: 'block',
+                  margin: '10px 0',
+                  padding: '10px',
+                  borderRadius: '5px',
+                  width: '300px',
+                  height: '100px',
+                  backgroundColor: '#ffffff',
+                  color: '#000000',
+                }}
+              />
+            </label>
+            {/* Agrega aquí el resto de tus campos de formulario */}
+            <button
+            type="button"
+            style={{
+              backgroundColor: '#575960',
+              color: '#ffffff',
+              padding: '10px 20px',
+              fontSize: '18px',
+              borderRadius: '5px',
+              border: 'none',
+              cursor: 'pointer',
+              marginTop: '20px',
+              marginRight: '10px', // Espacio entre botones
+            }}
+          >
+            Crear Actividad
+          </button>
+          <div></div>
+          <button
+            type="button"
+            style={{
+              backgroundColor: '#575960',
+              color: '#ffffff',
+              padding: '10px 20px',
+              fontSize: '18px',
+              borderRadius: '5px',
+              border: 'none',
+              cursor: 'pointer',
+              marginTop: '20px',
+            }}
+          >
+            Materiales
+          </button>
+          <div></div>
+            <button
+              type="submit"
+              style={{
+                backgroundColor: '#575960',
+                color: '#ffffff',
+                padding: '10px 20px',
+                fontSize: '18px',
+                borderRadius: '5px',
+                border: 'none',
+                cursor: 'pointer',
+                marginTop: '20px',
+              }}
+            >
+              Guardar Cambios
+            </button>
+          </form>
+        </div>
       </div>
     );
   };
