@@ -27,8 +27,8 @@ def login_persona():
     insio.enviar(request.json)
     ver = insio.confirmacion()
 
-    resultado = {"Tipo_persona": ver}
-    cadena_json = json.dumps(resultado)
+    
+    cadena_json = json.dumps(ver)
     return cadena_json
 
 

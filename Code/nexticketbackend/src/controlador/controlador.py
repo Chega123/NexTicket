@@ -15,7 +15,7 @@ class controlador_registro:
             self.datos =datos_json
         except json.JSONDecodeError as e:
             print(f"Error al cargar JSON: {e}")
- #Verificar(MET-08)
+
     def verifica(self):
         email = self.datos["Email"]
         if email:
@@ -23,7 +23,7 @@ class controlador_registro:
             return resultado
         else:
             return []
-#Guardar(MET-09)
+
     def guardar(self):
         verificador = self.verifica()
         if verificador:
@@ -47,42 +47,35 @@ class controlador_inisio_sesion:
             self.datos = datos_json
         except json.JSONDecodeError as e:
             print(f"Error al cargar JSON: {e}") 
-    #Veridicar MET-10
+    #metodo-0
     def veridicar(self):
         resultado=[]
         print(self.datos)
         email=self.datos["Email"]
         contrasena=self.datos["Contrasena"]
         resultado=servicio_personas.verifica_user_contrsana(email,contrasena)
+        print(resultado)
         return resultado
-#Confirmar MET-11
+
     def confirmacion(self):
         verificador=self.veridicar()
         print(verificador)
         print(verificador)
         if(verificador):
-            if(verificador[0][2]=="usuario"):
-                return "usuario"
-            elif(verificador[0][2]=="administrador"):
-                return "administrador"
-            elif(verificador[0][2]=="encargado"):
-                return "encargado"
-        else:
-            return "False"
-        return "False"
+            return {'id_persona':verificador[0][0],"Tipo_persona":verificador[0][2]}
 
 
 
 class controlador_cambiar_rol():
     def __init__(self):
         self.datos={}
-        #Enviar MET-12
+        
     def enviar(self,datos_json):
         try:
             self.datos = datos_json
         except json.JSONDecodeError as e:
             print(f"Error al cargar JSON: {e}") 
-    #Verifica MET-13
+
     def verifica(self):
         email = self.datos["Email"]
         if email:
@@ -92,7 +85,7 @@ class controlador_cambiar_rol():
             return []
 
 
-# camabiar_rol_guardian MET-14
+
     def camabiar_rol_guardan(self):
         verificador = self.verifica()
         email = self.datos["Email"]
@@ -116,7 +109,7 @@ class controlador_cambiar_rol():
             return False
         else:
             return False
-    #Verifica Email MET-15
+    
 def verifica_Email(datajson):
     datos=datajson
     email=datos["Email"]
@@ -132,7 +125,7 @@ class controlador_eleminar_usuario():
         self.data={}
     def enviar(self,datajson):
         self.data=datajson
-        #Eliminar MET-16
+        
     def eliminar(self):
         print(self.data)
         datos=self.data["Personas"]
@@ -147,9 +140,8 @@ class generar_venetos1():
 
     def enviar(self,data):
         self.datos=data
-#buscar MET-17
+
     def buscar(self):
-        
         verifica=servicio_personas.verifica_user(self.datos["email"])
         eventos=servicio_personas.genera_veventos_e(verifica[0][0])
         eventosreturn={"eventos":[]}
@@ -164,7 +156,6 @@ class controlador_crear_ubicacion():
         self.datos={}
     def enviar(self,datosjs):
         self.datos=datosjs
-        #Crear ubicacion MET-18
     def crear_ubicacion(self):
         ubicaicon1=servicio_eventos.agregar_ubicacion_consulta(self.datos)
         ubicacion={"id_ubicacion":ubicaicon1[0]}
@@ -175,7 +166,7 @@ class controlador_crear_plantilla():
         self.datos={}
     def enviar(self,datosjs):
         self.datos=datosjs
-    def crear_ubicacion(self):
+    def crear_plantilla(self):
         plantilla1=servicio_eventos.consulta_genrar_plantilla(self.datos)
         plantilla={"id_ubicacion":plantilla1[0]}
         return plantilla
@@ -192,7 +183,7 @@ class crear_evento:
 
 
 
-#Generar plantillas(MET-20)
+
 def genera_plantillas(id):
     plantillas=servicio_eventos.consulta_genrar_plantilla(id)
     plantilla_s={"plantillas":[]}
@@ -201,9 +192,8 @@ def genera_plantillas(id):
         e = dict(zip(columnas, dato))
         plantilla_s["plantillas"].append(e)
     return   plantilla_s
-    
-#Generar Ubicaciones MET-21
-def generar_ubicaciones():
+
+def generar_ubicaciones(id):
     ubicacion_lista=servicio_eventos.consultar_ubicacion_encargado(id)
     ubicaciones={"ubicaion":[]}
     columnas=["id_ubicacion","pais","departamento","direccion"]
@@ -211,7 +201,7 @@ def generar_ubicaciones():
         e = dict(zip(columnas, dato))
         ubicaciones["ubicaion"].append(e)
     return   ubicaciones
-# genera personas MET-22
+
 def genera_personas_1():
     resultado=servicio_personas.generar_user()
     return resultado
