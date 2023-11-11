@@ -8,6 +8,7 @@ CORS(app)
 
 
 @app.route('/registro',methods=['POST'])
+# Crear persona MET-01
 def crear_persona():
     ingresa=controlador_registro()
     ingresa.enviardatos(request.json)
@@ -19,6 +20,7 @@ def crear_persona():
 
 
 @app.route('/login', methods=['POST'])
+#Login persona MET-02
 def login_persona():
     print("login")
     insio = controlador_inisio_sesion()
@@ -31,6 +33,7 @@ def login_persona():
 
 
 @app.route ('/cambia',methods=['POST'])
+#Cambiar roles MET-03
 def cambia_rol():
     cambia=controlador_cambiar_rol()
     cambia.enviar(request.json)
@@ -43,6 +46,8 @@ def cambia_rol():
 
 
 @app.route ('/existencia',methods=['POST'])
+
+# Verificar email MET-04
 def verifica_email():
     controla=verifica_Email(request.json)
     #controlamos la existencnia del Email
@@ -54,6 +59,7 @@ def verifica_email():
 
 
 @app.route ('/eliminar',methods=['POST'])
+#Eliminar personas MET-05
 def eliminar_personas():
     try :
         eliminar_person=controlador_eleminar_usuario()
@@ -65,11 +71,13 @@ def eliminar_personas():
 
 
 @app.route('/generar_personas',methods=['GET'])
+# Generar Persona MET-06
 def genera_person():
     base=genera_personas_1()
     return base
 
 @app.route('/generar_eventos_encargado',methods=['POST'])
+#Generar ventos(MET-07)
 def generar_ventos():
     eventosp=generar_venetos1()
     eventosp.enviar(request.json)
