@@ -5,6 +5,7 @@ class servicio_eventos():
     
     
     @classmethod
+    #Agregar Ubicacion consulta MET-30
     def agregar_ubicacion_consulta(cls, datos):
         base_d = obtener()
         consulta=base_d.cursor()
@@ -20,6 +21,7 @@ class servicio_eventos():
     
 
     @classmethod
+    #Agregar plantilla consulta MET-31
     def agregar_plantilla_consulta(cls, datos):
         base_d = obtener()
         consulta=base_d.cursor()
@@ -42,6 +44,8 @@ class servicio_eventos():
         return ubicacion
     
     @classmethod
+
+    # Generar eventos mostrar MET-32
     def genera_veventos_e(cls,id):
         base_d = obtener()
         consulta=base_d.cursor()
@@ -61,6 +65,7 @@ class servicio_eventos():
         return resultados
     
     @classmethod
+    #Consultar ubicacion encargado MET-33
     def consultar_ubicacion_encargado(cls,id):
         base_d = obtener()
         consulta=base_d.cursor()
@@ -79,6 +84,7 @@ class servicio_eventos():
         return resultados
         
     @classmethod
+    #consulta generar plantilla MET-34 
     def consulta_genrar_plantilla(cls,id):
         base_d = obtener()
         consulta=base_d.cursor()
