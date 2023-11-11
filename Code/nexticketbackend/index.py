@@ -3,7 +3,10 @@ from flask_cors import CORS
 from src.controlador.controlador import *
 app = Flask(__name__)
 
+
 CORS(app)
+
+
 @app.route('/registro',methods=['POST'])
 def crear_persona():
     ingresa=controlador_registro()
@@ -45,7 +48,7 @@ def verifica_email():
     #controlamos la existencnia del Email
     if (controla):
         #envia true si exite
-        return {"validez":"True","Nombre":controla[0][1],"Email":controla[0][3],"Rol":controla[0][7]}
+        return {"validez":"True","Nombre":controla[0][1],"Email":controla[0][4],"Rol":controla[0][2]}
     else:
         return '{"validez":"False"}'
 

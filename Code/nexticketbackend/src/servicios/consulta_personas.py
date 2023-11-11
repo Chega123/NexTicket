@@ -111,24 +111,5 @@ class servicio_personas():
          
 
  #aqui se ve los eventos segun el encargado    
-    @classmethod
-    def genera_veventos_e(cls,id):
-        base_d = obtener()
-        consulta=base_d.cursor()
-        
-         
-
-        sql = f"""
-        SELECT e.id_evento, e.nombre, e.descripcion
-        FROM encargado_has_evento ee
-        INNER JOIN evento e ON ee.evento_id = e.id_evento
-        WHERE ee.encargado_id = {id};
-        """
-
-        consulta.execute(sql)
-        resultados = consulta.fetchall()
-
-        print(resultados)
-        base_d.close()
-
-        return resultados
+   
+  
