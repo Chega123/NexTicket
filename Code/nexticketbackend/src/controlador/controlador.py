@@ -1,6 +1,9 @@
 from src.servicios.consulta_personas import servicio_personas
+from src.servicios.consultas_eventos import servicio_eventos
 from src.model.persona import person
 import json
+
+
 
 class controlador_registro:
     def __init__(self):
@@ -32,7 +35,9 @@ class controlador_registro:
            
             resultado=servicio_personas.inserta_user(persona1)
             return True
-           
+
+
+
 class controlador_inisio_sesion:
     def __init__(self):
         self.datos={}
@@ -42,7 +47,7 @@ class controlador_inisio_sesion:
             self.datos = datos_json
         except json.JSONDecodeError as e:
             print(f"Error al cargar JSON: {e}") 
-
+    #metodo-0
     def veridicar(self):
         resultado=[]
         print(self.datos)
@@ -66,6 +71,8 @@ class controlador_inisio_sesion:
             return "False"
         return "False"
 
+
+
 class controlador_cambiar_rol():
     def __init__(self):
         self.datos={}
@@ -83,7 +90,9 @@ class controlador_cambiar_rol():
             return resultado
         else:
             return []
-        
+
+
+
     def camabiar_rol_guardan(self):
         verificador = self.verifica()
         email = self.datos["Email"]
@@ -143,13 +152,35 @@ class generar_venetos1():
         
         verifica=servicio_personas.verifica_user(self.datos["email"])
         eventos=servicio_personas.genera_veventos_e(verifica[0][0])
-        eventosreturn={eventos:[]}
+        eventosreturn={"eventos":[]}
         columnas=["id_evento","nombre","descripcion"]
         for dato in eventos:
             evento = dict(zip(columnas, dato))
-            eventosreturn['eventos'].append(evento)
-        return  eventosreturn                                       
+            eventosreturn["eventos"].append(evento)
+        return  eventosreturn    
+    
+class controlador_crear_ubicacion():
+    def __ini__(self):
+        self.datos={}
+    def enviar(self,datosjs):
+        self.datos=datosjs
+    def crear_ubicacion(self):
+        ubicaicon1=servicio_eventos.agregar_ubicacion_consulta(self.datos)
+        ubicacion={"id_ubicacion":ubicaicon1[0]}
+        return ubicacion    
+
+class controlador_crear_plantilla():
+    def __ini__(self):
+        self.datos={}
+    def enviar(self,datosjs):
+        self.datos=datosjs
+    def crear_ubicacion(self):
+        plantilla1=servicio_eventos.consulta_genrar_plantilla(self.datos)
+        plantilla={"id_ubicacion":plantilla1[0]}
+        return plantilla
+
 class crear_evento:
+
     def __init__(self):
         self.datos={}
 
@@ -161,6 +192,23 @@ class crear_evento:
 
 
 
+def genera_plantillas(id):
+    plantillas=servicio_eventos.consulta_genrar_plantilla(id)
+    plantilla_s={"plantillas":[]}
+    columnas=["id_plantilla","nombre","turno","categoria_edad"]
+    for dato in plantillas:
+        e = dict(zip(columnas, dato))
+        plantilla_s["plantillas"].append(e)
+    return   plantilla_s
+
+def generar_ubicaciones():
+    ubicacion_lista=servicio_eventos.consultar_ubicacion_encargado(id)
+    ubicaciones={"ubicaion":[]}
+    columnas=["id_ubicacion","pais","departamento","direccion"]
+    for dato in ubicacion_lista:
+        e = dict(zip(columnas, dato))
+        ubicaciones["ubicaion"].append(e)
+    return   ubicaciones
 
 def genera_personas_1():
     resultado=servicio_personas.generar_user()
