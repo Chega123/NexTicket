@@ -3,6 +3,7 @@ from src.DB.base_datos import obtener
 
 class servicio_personas():
     @classmethod
+    #Verificar user MET-23
     def verifica_user(cls, email):
         base_d = obtener()
         consulta=base_d.cursor()
@@ -14,6 +15,7 @@ class servicio_personas():
         return resultados
     
     @classmethod
+    # Insertar User MET-24
     def inserta_user(cls, persona):
         
             base_d = obtener()
@@ -42,6 +44,7 @@ class servicio_personas():
         
     
     @classmethod
+    #Verificar user contraseña(MET-25)
     def verifica_user_contrsana(cls, email,contrasena):
         base_d = obtener()
         consulta=base_d.cursor()
@@ -53,6 +56,7 @@ class servicio_personas():
         return resultados
 
     @classmethod
+    #Eliminar user MET-26
     def elimiar_user(cls, email):
         
             base_d = obtener()
@@ -64,6 +68,7 @@ class servicio_personas():
         
         
     @classmethod
+    #crear encargado MET-27
     def crea_encargado(cls,usuario ):
         
             base_d = obtener()
@@ -79,6 +84,7 @@ class servicio_personas():
         
 
     @classmethod
+    #
     def crea_administrador(cls,usuario ):
         try:
             base_d = obtener()
@@ -94,6 +100,7 @@ class servicio_personas():
         except:
             return False
     @classmethod
+    #Generar user MET-29
     def generar_user(cls):
         base_d = obtener()
         consulta1=base_d.cursor()
