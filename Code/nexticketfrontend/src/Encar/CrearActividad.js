@@ -31,7 +31,7 @@ class Header extends React.Component {
     }
   }
   
-  const CrearActividad = () => {
+  const CrearEvento = () => {
     let { id } = useParams();
     console.log(id);
   
@@ -114,23 +114,24 @@ class Header extends React.Component {
               </tr>
             </tbody>
           </table>
-          <button
-        type="button"
-        onClick={() => navigate('/crear_act')}
-        style={{
-          backgroundColor: '#575960',
-          color: '#ffffff',
-          padding: '10px 20px',
-          fontSize: '18px',
-          borderRadius: '5px',
-          border: 'none',
-          cursor: 'pointer',
-          marginTop: '20px',
-          marginRight: '10px', // Espacio entre botones
-        }}
-      >
-        Crear Actividad
-      </button>
+<button
+  type="button"
+  onClick={() => navigate(`/crear_act?id=${id}`)}
+  style={{
+    backgroundColor: '#575960',
+    color: '#ffffff',
+    padding: '10px 20px',
+    fontSize: '18px',
+    borderRadius: '5px',
+    border: 'none',
+    cursor: 'pointer',
+    marginTop: '20px',
+    marginRight: '10px', // Espacio entre botones
+  }}
+>
+  Crear Actividad
+</button>
+
                 <table style={{ marginTop: '20px', border: '1px solid black' }}>
           <thead>
             <tr>
@@ -183,5 +184,5 @@ class Header extends React.Component {
     );
   };
   
-  export default CrearActividad;
+  export default CrearEvento;
   

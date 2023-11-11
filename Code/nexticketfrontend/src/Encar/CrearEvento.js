@@ -40,6 +40,9 @@ class Header extends React.Component {
   
     const navigate = useNavigate();
 
+    const [plantillas, setPlantillas] = useState([]);
+
+
     const handleSubmit = (event) => {
       event.preventDefault();
   
@@ -54,8 +57,27 @@ class Header extends React.Component {
       console.log(formData);
   
       // Aquí es donde harías la llamada al backend...
+
+
     };
-  
+
+    useEffect(() => {
+      // Aquí harías la llamada al backend para obtener las plantillas basadas en el ID del usuario
+      const obtenerPlantillas = async () => {
+        try {
+          // Reemplaza la URL con la ruta de tu endpoint para obtener las plantillas
+          const response = await fetch(`/api/obtener-plantillas?id=${id}`);
+          const data = await response.json();
+    
+          // Actualiza el estado de las plantillas con los datos recibidos del backend
+          setPlantillas(data.plantillas);
+        } catch (error) {
+          console.error('Error al obtener plantillas:', error);
+        }
+      };
+    
+      obtenerPlantillas();
+    }, [id]);
     
     return (
       <div>
@@ -101,6 +123,31 @@ class Header extends React.Component {
               </label>
             </div>
             <div>
+  <label style={{ fontSize: '18px', color: '#000000' }}>
+    Plantillas:
+    <div
+      style={{
+        border: '1px solid black',
+        borderRadius: '5px',
+        width: '300px',
+        height: '100px',
+        padding: '10px',
+        backgroundColor: '#ffffff',
+        color: '#000000',
+        marginTop: '10px',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      {/* Aquí mostrarás las plantillas */}
+      {plantillas.map((plantilla, index) => (
+        <div key={index}>{plantilla}</div>
+      ))}
+    </div>
+  </label>
+</div>
+
+            <div>
                     <table style={{ marginTop: '20px', border: '1px solid black' }}>
             <thead>
               <tr>
@@ -114,23 +161,23 @@ class Header extends React.Component {
               </tr>
             </tbody>
           </table>
-<button
-  type="button"
-  onClick={() => navigate(`/crear_act?id=${id}`)}
-  style={{
-    backgroundColor: '#575960',
-    color: '#ffffff',
-    padding: '10px 20px',
-    fontSize: '18px',
-    borderRadius: '5px',
-    border: 'none',
-    cursor: 'pointer',
-    marginTop: '20px',
-    marginRight: '10px', // Espacio entre botones
-  }}
->
-  Crear Actividad
-</button>
+          <button
+            type="button"
+            onClick={() => navigate(`/crear_act?id=${id}`)}
+            style={{
+              backgroundColor: '#575960',
+              color: '#ffffff',
+              padding: '10px 20px',
+              fontSize: '18px',
+              borderRadius: '5px',
+              border: 'none',
+              cursor: 'pointer',
+              marginTop: '20px',
+              marginRight: '10px', // Espacio entre botones
+            }}
+          >
+            Crear Actividad
+          </button>
 
                 <table style={{ marginTop: '20px', border: '1px solid black' }}>
           <thead>

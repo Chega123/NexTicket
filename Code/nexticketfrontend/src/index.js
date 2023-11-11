@@ -11,6 +11,7 @@ import EliminarUsuarios from "./Admin/EliminarUsuarios";
 import Encargado from "./Encar/Encargado";
 import CrearEvento from "./Encar/CrearEvento";
 import CrearActividad from "./Encar/CrearActividad";
+import CrearPlantilla from "./Encar/CrearPlantilla";
 
 ReactDOM.render(
   <Router>
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route path="/encargado" element={<Encargado />} />
         <Route path="/crear_e" element={<CrearEvento />} />
         <Route path="/crear_act" element={<CrearActividad />} />
+        <Route path="/crear_plant" element={<CrearPlantilla />} />
         {/* Agrega aquí las rutas para los demás componentes */}
       </Routes>
     </React.StrictMode>
