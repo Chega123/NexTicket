@@ -85,6 +85,21 @@ def generar_ventos():
     return resultado
     
     
+@app.route('/agregar_ubicacion',methods=['POST'])
+#Generar ventos(MET-08)
+def agrega_ubicacion():
+    ubicacion_p=controlador_crear_ubicacion()
+    ubicacion_p.enviar(request.json)
+    resultado=ubicacion_p.crear_ubicacion()
+    return resultado    
+
+@app.route('/agregar_plantilla',methods=['POST'])
+#Generar ventos(MET-09)
+def agrega_plantilla():
+    plantilla_p=controlador_crear_plantilla()
+    plantilla_p.enviar(request.json)
+    resultado=plantilla_p.crear_plantilla()
+    return resultado    
 
 if __name__ == '__main__':
     app.run(debug=True)
