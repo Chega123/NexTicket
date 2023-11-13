@@ -1,4 +1,3 @@
-//UI-17 Interfaz Crear Plantilla
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -26,37 +25,33 @@ class Header extends React.Component {
       return (
         <div style={headerStyle}>
           <img src="/logo.png" alt="Logo" style={logoStyle} />
-          <h1 style={labelStyle}>Crear Plantilla</h1>
+          <h1 style={labelStyle}>Añadir Ubicación</h1>
         </div>
       );
     }
-  }
+}
 
-
-const CrearPlantilla = () => {
-  const [nombre, setnombre] = useState('');
-  const [ingreso_libre, setingreso_libre] = useState(false);
-  const [permitir_invitaciones, setpermitir_invitaciones] = useState(false);
-  const [edad, setEdad] = useState('');
-  const [turno, setTurno] = useState('');
+const AnadirUbicacion = () => {
+  const [pais, setPais] = useState('');
+  const [departamento, setDepartamento] = useState('');
+  const [direccion, setDireccion] = useState('');
+  const [aforo, setAforo] = useState('');
+  const [tamano, setTamano] = useState('');
 
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Aquí es donde enviarías los datos del formulario al backend
     const formData = {
-      nombre,
-      ingreso_libre,
-      permitir_invitaciones,
-      edad,
-      turno,
+      pais,
+      departamento,
+      direccion,
+      aforo,
+      tamano,
     };
 
     console.log(formData);
-
-    // Aquí es donde harías la llamada al backend...
   };
 
   return (
@@ -66,56 +61,11 @@ const CrearPlantilla = () => {
         <form onSubmit={handleSubmit}>
           <div>
             <label style={{ fontSize: '18px', color: '#000000' }}>
-              Nombre de la Plantilla:
-              <input
-                type="text"
-                name="nombre"
-                value={nombre}
-                onChange={(e) => setnombre(e.target.value)}
-                style={{
-                  display: 'block',
-                  margin: '10px 0',
-                  padding: '10px',
-                  borderRadius: '5px',
-                  width: '300px',
-                  backgroundColor: '#ffffff',
-                  color: '#000000',
-                }}
-              />
-            </label>
-          </div>
-
-          <div>
-            <label style={{ fontSize: '18px', color: '#000000' }}>
-              Ingreso libre:
-              <input
-                type="checkbox"
-                checked={ingreso_libre}
-                onChange={() => setingreso_libre(!ingreso_libre)}
-                style={{ marginLeft: '10px' }}
-              />
-            </label>
-          </div>
-
-          <div>
-            <label style={{ fontSize: '18px', color: '#000000' }}>
-              Permitir que los invitados inviten a más personas:
-              <input
-                type="checkbox"
-                checked={permitir_invitaciones}
-                onChange={() => setpermitir_invitaciones(!permitir_invitaciones)}
-                style={{ marginLeft: '10px' }}
-              />
-            </label>
-          </div>
-
-          <div>
-            <label style={{ fontSize: '18px', color: '#000000' }}>
-              Edad:
+              País:
               <select
-                name="edad"
-                value={edad}
-                onChange={(e) => setEdad(e.target.value)}
+                name="pais"
+                value={pais}
+                onChange={(e) => setPais(e.target.value)}
                 style={{
                   display: 'block',
                   margin: '10px 0',
@@ -127,19 +77,18 @@ const CrearPlantilla = () => {
                 }}
               >
                 <option value="">Selecciona una opción</option>
-                <option value="mayoresDe18">Mayores de 18</option>
-                <option value="todasLasEdades">Todas las edades</option>
+                {/* Aquí deberías agregar las opciones de los países */}
               </select>
             </label>
           </div>
 
           <div>
             <label style={{ fontSize: '18px', color: '#000000' }}>
-              Turno:
+              Departamento:
               <select
-                name="turno"
-                value={turno}
-                onChange={(e) => setTurno(e.target.value)}
+                name="departamento"
+                value={departamento}
+                onChange={(e) => setDepartamento(e.target.value)}
                 style={{
                   display: 'block',
                   margin: '10px 0',
@@ -151,8 +100,74 @@ const CrearPlantilla = () => {
                 }}
               >
                 <option value="">Selecciona una opción</option>
-                <option value="diurno">Diurno</option>
-                <option value="nocturno">Nocturno</option>
+                {/* Aquí deberías agregar las opciones de los departamentos */}
+              </select>
+            </label>
+          </div>
+
+          <div>
+            <label style={{ fontSize: '18px', color: '#000000' }}>
+              Dirección:
+              <input
+                type="text"
+                name="direccion"
+                value={direccion}
+                onChange={(e) => setDireccion(e.target.value)}
+                style={{
+                  display: 'block',
+                  margin: '10px 0',
+                  padding: '10px',
+                  borderRadius: '5px',
+                  width: '300px',
+                  backgroundColor: '#ffffff',
+                  color: '#000000',
+                }}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label style={{ fontSize: '18px', color: '#000000' }}>
+              Aforo:
+              <input
+                type="number"
+                name="aforo"
+                value={aforo}
+                onChange={(e) => setAforo(e.target.value)}
+                style={{
+                  display: 'block',
+                  margin: '10px 0',
+                  padding: '10px',
+                  borderRadius: '5px',
+                  width: '300px',
+                  backgroundColor: '#ffffff',
+                  color: '#000000',
+                }}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label style={{ fontSize: '18px', color: '#000000' }}>
+              Tamaño:
+              <select
+                name="tamano"
+                value={tamano}
+                onChange={(e) => setTamano(e.target.value)}
+                style={{
+                  display: 'block',
+                  margin: '10px 0',
+                  padding: '10px',
+                  borderRadius: '5px',
+                  width: '300px',
+                  backgroundColor: '#ffffff',
+                  color: '#000000',
+                }}
+              >
+                <option value="">Selecciona una opción</option>
+                <option value="pequeno">Pequeño</option>
+                <option value="mediano">Mediano</option>
+                <option value="grande">Grande</option>
               </select>
             </label>
           </div>
@@ -171,7 +186,7 @@ const CrearPlantilla = () => {
                 marginTop: '20px',
               }}
             >
-              Guardar Plantilla
+              Guardar Ubicación
             </button>
           </div>
         </form>
@@ -180,4 +195,4 @@ const CrearPlantilla = () => {
   );
 };
 
-export default CrearPlantilla;
+export default AnadirUbicacion;
