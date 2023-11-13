@@ -2,14 +2,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = () => {
-  return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px', backgroundColor: '#383836' }}>
-      <img src="/logo.png" alt="Logo" style={{ height: '100px' }} />
-      <h1 style={{ color: '#ffffff' }}>Iniciar sesión</h1>
-    </div>
-  );
-};
+//FE-01 clase "Header" que esta en todas las interfaces, contiene el logo y el titulo
+class Header extends React.Component {
+  render() {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px', backgroundColor: '#383836' }}>
+        <img src="/logo.png" alt="Logo" style={{ height: '100px' }} />
+        <h1 style={{ color: '#ffffff' }}>Iniciar Sesión</h1>
+      </div>
+    );
+  }
+}
 
 const Login = () => {
   const [email, setEmail] = useState('');
