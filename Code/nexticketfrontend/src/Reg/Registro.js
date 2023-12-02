@@ -1,3 +1,4 @@
+//UI-01 Pagina de Registro
 import React, { } from 'react';
 import { Link } from 'react-router-dom';
 

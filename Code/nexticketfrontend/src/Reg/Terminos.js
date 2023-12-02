@@ -1,3 +1,4 @@
+//UI-02 Terminos y condiciones
 import React from 'react';
 import { Link } from 'react-router-dom';
 

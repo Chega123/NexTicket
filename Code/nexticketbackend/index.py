@@ -77,15 +77,21 @@ def genera_person():
     return base
 
 @app.route('/generar_eventos_encargado',methods=['POST'])
-#Generar ventos(MET-07)
+#Generar eventos(MET-07)
 def generar_ventos():
     eventosp=generar_venetos1()
     eventosp.enviar(request.json)
     resultado=eventosp.buscar()
     return resultado
     
+<<<<<<< HEAD
 @app.route('/agregar_ubicacion',methods=['POST'])
 #Generar ventos(MET-08)
+=======
+    
+@app.route('/agregar_ubicacion',methods=['POST'])
+#Agregar_ubicacion(MET-08)
+>>>>>>> f88190e4fee309eabc43c20aa97620f6e520ad37
 def agrega_ubicacion():
     ubicacion_p=controlador_crear_ubicacion()
     ubicacion_p.enviar(request.json)
@@ -93,13 +99,20 @@ def agrega_ubicacion():
     return resultado    
 
 @app.route('/agregar_plantilla',methods=['POST'])
+<<<<<<< HEAD
 #Generar ventos(MET-09)
+=======
+#Agregar_plantilla(MET-09)
+>>>>>>> f88190e4fee309eabc43c20aa97620f6e520ad37
 def agrega_plantilla():
     plantilla_p=controlador_crear_plantilla()
     plantilla_p.enviar(request.json)
     resultado=plantilla_p.crear_plantilla()
     return resultado    
+<<<<<<< HEAD
 
+=======
+>>>>>>> f88190e4fee309eabc43c20aa97620f6e520ad37
 
 if __name__ == '__main__':
     app.run(debug=True)

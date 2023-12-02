@@ -1,3 +1,4 @@
+//UI-05 Vista Principal - Administrador
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 

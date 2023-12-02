@@ -12,6 +12,7 @@ import Encargado from "./Encar/Encargado";
 import CrearEvento from "./Encar/CrearEvento";
 import CrearActividad from "./Encar/CrearActividad";
 import CrearPlantilla from "./Encar/CrearPlantilla";
+import AnadirUbicacion from "./Encar/AnadirUbicacion";
 
 ReactDOM.render(
   <Router>
@@ -28,6 +29,7 @@ ReactDOM.render(
         <Route path="/crear_e" element={<CrearEvento />} />
         <Route path="/crear_act" element={<CrearActividad />} />
         <Route path="/crear_plant" element={<CrearPlantilla />} />
+        <Route path="/anadir_ubic" element={<AnadirUbicacion />} />
         {/* Agrega aquí las rutas para los demás componentes */}
       </Routes>
     </React.StrictMode>
