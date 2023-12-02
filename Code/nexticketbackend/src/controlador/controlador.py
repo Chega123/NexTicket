@@ -9,13 +9,13 @@ class controlador_registro:
     def __init__(self):
         self.datos = {}
         self.verificado = False
-        
+     #metodo_guarda los datos EN VARIBALE  para registro ctrc-1
     def enviardatos(self, datos_json):
         try:
             self.datos =datos_json
         except json.JSONDecodeError as e:
             print(f"Error al cargar JSON: {e}")
-
+    #VERIFICA LA EXISTENCIA ctrc-2
     def verifica(self):
         email = self.datos["Email"]
         if email:
@@ -23,7 +23,7 @@ class controlador_registro:
             return resultado
         else:
             return []
-
+    #GUARDA EN LA BASE DE DATOS ctrc-3
     def guardar(self):
         verificador = self.verifica()
         if verificador:
@@ -47,7 +47,7 @@ class controlador_inisio_sesion:
             self.datos = datos_json
         except json.JSONDecodeError as e:
             print(f"Error al cargar JSON: {e}") 
-    #metodo-0
+    
     def veridicar(self):
         resultado=[]
         print(self.datos)
@@ -85,7 +85,7 @@ class controlador_cambiar_rol():
             return []
 
 
-
+    GUSR
     def camabiar_rol_guardan(self):
         verificador = self.verifica()
         email = self.datos["Email"]
@@ -93,16 +93,15 @@ class controlador_cambiar_rol():
 
         rol=self.datos["Rol"]
         if verificador:
-            if (rol!= verificador[0][7]):
-                elima=servicio_personas.elimiar_user(email)
-                if (rol=="usuario"):
-                    persona1=person(0,verificador[0][1],rol,verificador[0][3],verificador[0][4],verificador[0][5],verificador[0][6],verificador[0][7],verificador[0][8],verificador[0][9])
-                    resultado=servicio_personas.inserta_user(persona1)
+            if (rol!= verificador[0][2]):
+                data={"id_persona":verificador[0],"rol":rol}
+                if (rol=="usuario"):                  
+                    resultado=servicio_personas.cambia_roll(data)
                 elif(rol=="encargado"):
-                    resultado=servicio_personas.crea_encargado(verificador)
+                    resultado=servicio_personas.cambia_roll(data)
                     
                 elif(rol=="administrador"):
-                    resultado=servicio_personas.crea_administrador(verificador)
+                    resultado=servicio_personas.cambia_roll(data)
                 else:
                     return False
                 return True
@@ -171,13 +170,6 @@ class controlador_crear_plantilla():
         plantilla={"id_ubicacion":plantilla1[0]}
         return plantilla
 
-class crear_evento:
-
-    def __init__(self):
-        self.datos={}
-
-    def enviar(self,data):
-        self.datos=data
 
 
 

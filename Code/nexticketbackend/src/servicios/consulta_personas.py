@@ -22,7 +22,7 @@ class servicio_personas():
             consulta=base_d.cursor()
             print (persona.numero_documento)
 
-            insert_sql_usuario = 'INSERT INTO "usuario" ("nombre",  "rol","apellido","email", "telefono","contrasena", "fecha_nacimiento","tipo_documento","numero_documento") VALUES ( %s,%s, %s, %s, %s, %s, %s,%s,%s) '
+            insert_sql_usuario = 'INSERT INTO "persona" ("nombre",  "rol","apellido","email", "telefono","contrasena", "fecha_nacimiento","tipo_documento","numero_documento") VALUES ( %s,%s, %s, %s, %s, %s, %s,%s,%s) '
                 
             valores_usuario = (
                 persona.nombre,
@@ -35,8 +35,7 @@ class servicio_personas():
                 persona.tipo_documento,
                 persona.numero_documento
                     
-                )
-            
+            )
             consulta.execute(insert_sql_usuario, valores_usuario)
             base_d.commit()
             base_d.close()
@@ -73,7 +72,7 @@ class servicio_personas():
         
             base_d = obtener()
             consulta=base_d.cursor()
-            insert_sql_usuario = 'INSERT INTO "encargado" ("nombre",  "rol","apellido","email", "telefono","contrasena", "fecha_nacimiento","tipo_documento","numero_documento") VALUES ( %s,%s, %s, %s, %s, %s, %s,%s,%s) '
+            insert_sql_usuario = 'INSERT INTO "persona" ("nombre",  "rol","apellido","email", "telefono","contrasena", "fecha_nacimiento","tipo_documento","numero_documento") VALUES ( %s,%s, %s, %s, %s, %s, %s,%s,%s) '
             valores_usuario = (
                 usuario[0][1],"encargado",usuario[0][3],usuario[0][4],usuario[0][5],usuario[0][6],usuario[0][7],usuario[0][8],usuario[0][9]
                 )
@@ -84,12 +83,12 @@ class servicio_personas():
         
 
     @classmethod
-    #
+    #crear administrador MET-28
     def crea_administrador(cls,usuario ):
         try:
             base_d = obtener()
             consulta=base_d.cursor()
-            insert_sql_usuario = 'INSERT INTO "administrador" ("nombre",  "rol","apellido","email", "telefono","contrasena", "fecha_nacimiento","tipo_documento","numero_docuemnto") VALUES ( %s,%s, %s, %s, %s, %s, %s,%s,%s) RETURNING "ID"'
+            insert_sql_usuario = 'INSERT INTO "persona" ("nombre",  "rol","apellido","email", "telefono","contrasena", "fecha_nacimiento","tipo_documento","numero_docuemnto") VALUES ( %s,%s, %s, %s, %s, %s, %s,%s,%s) RETURNING "ID"'
             valores_usuario = (
                 usuario[0][1],"administrador",usuario[0][3],usuario[0][4],usuario[0][5],usuario[0][6],usuario[0][7],usuario[0][8],usuario[0][9]
                 )
@@ -114,9 +113,18 @@ class servicio_personas():
             resultado_json.append(dict(zip(columnas, fila)))
         return resultado_json
     
-    
-         
 
- #aqui se ve los eventos segun el encargado    
-   
+    #Generar user MET-30
+    @classmethod 
+    def cambia_roll(cls,data):     
+        base_d = obtener()
+        consulta = base_d.cursor()
+
+           
+        update_sql_rol = 'UPDATE "persona" SET "rol" = %s WHERE "id_persona" = %s'
+    
   
+        consulta.execute(update_sql_rol, (data["rol"],data["id_persona"] ))
+        base_d.commit()
+
+        base_d.close()
