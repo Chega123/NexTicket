@@ -4,7 +4,7 @@ from src.model.persona import person
 import json
 
 
-
+#clase que controla registro class_1
 class controlador_registro:
     def __init__(self):
         self.datos = {}
@@ -37,7 +37,7 @@ class controlador_registro:
             return True
 
 
-
+#class_2
 class controlador_inisio_sesion:
     def __init__(self):
         self.datos={}
@@ -65,7 +65,7 @@ class controlador_inisio_sesion:
             return {'id_persona':verificador[0][0],"Tipo_persona":verificador[0][2]}
 
 
-
+#class_3
 class controlador_cambiar_rol():
     def __init__(self):
         self.datos={}
@@ -85,7 +85,7 @@ class controlador_cambiar_rol():
             return []
 
 
-    GUSR
+    #class_3
     def camabiar_rol_guardan(self):
         verificador = self.verifica()
         email = self.datos["Email"]
@@ -108,7 +108,7 @@ class controlador_cambiar_rol():
             return False
         else:
             return False
-    
+ #def_4 verifica email   
 def verifica_Email(datajson):
     datos=datajson
     email=datos["Email"]
@@ -117,7 +117,7 @@ def verifica_Email(datajson):
         return resultados
     else:
         return []
-
+ #class_5 elimina usuarios 
 class controlador_eleminar_usuario():
     def __init__(self) :
         
@@ -132,7 +132,7 @@ class controlador_eleminar_usuario():
         for emails in datos:
             resultado=servicio_personas.elimiar_user(emails["Email"])
 
-
+ #class_6 genera eventos
 class generar_venetos1():
     def __init__(self):
         self.datos={}
@@ -149,7 +149,7 @@ class generar_venetos1():
             evento = dict(zip(columnas, dato))
             eventosreturn["eventos"].append(evento)
         return  eventosreturn    
-    
+ #class_7 se crea aubicacion    
 class controlador_crear_ubicacion():
     def __ini__(self):
         self.datos={}
@@ -159,7 +159,7 @@ class controlador_crear_ubicacion():
         ubicaicon1=servicio_eventos.agregar_ubicacion_consulta(self.datos)
         ubicacion={"id_ubicacion":ubicaicon1[0]}
         return ubicacion    
-
+#class_8 se crea plantilla de evento 
 class controlador_crear_plantilla():
     def __ini__(self):
         self.datos={}
@@ -175,7 +175,7 @@ class controlador_crear_plantilla():
 
 
 
-
+#def_9 generamos las plantillas de encargado especifico 
 def genera_plantillas(id):
     plantillas=servicio_eventos.consulta_genrar_plantilla(id)
     plantilla_s={"plantillas":[]}
@@ -184,7 +184,7 @@ def genera_plantillas(id):
         e = dict(zip(columnas, dato))
         plantilla_s["plantillas"].append(e)
     return   plantilla_s
-
+#def_10 generamos las ubicaciones de encargado especifico 
 def generar_ubicaciones(id):
     ubicacion_lista=servicio_eventos.consultar_ubicacion_encargado(id)
     ubicaciones={"ubicaion":[]}
