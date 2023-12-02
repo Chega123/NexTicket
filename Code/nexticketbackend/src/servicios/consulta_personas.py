@@ -114,7 +114,7 @@ class servicio_personas():
         return resultado_json
     
 
-    #Generar user MET-30
+    #cambiar rol MET-30
     @classmethod 
     def cambia_roll(cls,data):     
         base_d = obtener()
